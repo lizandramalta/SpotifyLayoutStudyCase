@@ -1,6 +1,6 @@
 //
 //  Button.swift
-//  Spotify
+//  SpotifyLayoutStudyCase
 //
 //  Created by Lizandra Malta on 17/05/26.
 //

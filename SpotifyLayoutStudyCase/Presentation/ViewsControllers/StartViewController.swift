@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Spotify
+//  SpotifyLayoutStudyCase
 //
 //  Created by Lizandra Malta on 17/05/26.
 //
@@ -35,7 +35,7 @@ class StartViewController: UIViewController {
     
     private lazy var welcomeLabel = {
         let label = UILabel()
-        label.text = "Millions of Songs.\nFree on Spotify."
+        label.text = "Millions of Songs.\nFree on SpotifyLayoutStudyCase."
         label.font = UIFont(name: "AvenirNext-Bold", size: 28)
         label.textColor = .white
         label.numberOfLines = 0
