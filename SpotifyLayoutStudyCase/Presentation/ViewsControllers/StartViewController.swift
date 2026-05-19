@@ -52,7 +52,13 @@ class StartViewController: UIViewController {
         return view
     }()
     
-    private lazy var signUpButton = Button(label: "Sign up free", backgroundColor: .accent, foregroundColor: .black)
+    private lazy var signUpButton = {
+        let button = Button(label: "Sign up free", backgroundColor: .accent, foregroundColor: .black)
+        
+        button.addTarget(self, action: #selector(goToAlbumView), for: .touchUpInside)
+        
+        return button
+    }()
     
     private lazy var googleSocialLoginButton = Button(label: "Continue with Google", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.googleLogo, borderColor: .white, borderWidth: 1)
     
@@ -92,6 +98,11 @@ class StartViewController: UIViewController {
         addSubviews()
         setupConstraints()
         
+    }
+    
+    @objc func goToAlbumView() {
+        let nextScreen = AlbumViewController()
+        navigationController?.pushViewController(nextScreen, animated: true)
     }
     
     private func addSubviews() {
