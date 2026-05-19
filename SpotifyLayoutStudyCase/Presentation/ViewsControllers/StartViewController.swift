@@ -9,6 +9,9 @@ import UIKit
 
 class StartViewController: UIViewController {
     
+    private var logoCenterYConstraint: NSLayoutConstraint?
+    private var logoTopConstraint: NSLayoutConstraint?
+    
     private lazy var scrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -35,21 +38,21 @@ class StartViewController: UIViewController {
     
     private lazy var welcomeLabel = {
         let label = UILabel()
-        label.text = "Millions of Songs.\nFree on SpotifyLayoutStudyCase."
-        label.font = UIFont(name: "AvenirNext-Bold", size: 28)
+        label.text = "Millions of Songs.\nFree on Spotify"
+        
+        let baseFont =
+            UIFont(name: "AvenirNext-Bold", size: 28) ??
+            UIFont.systemFont(ofSize: 28, weight: .bold)
+        label.font = UIFontMetrics(forTextStyle: .title1)
+            .scaledFont(for: baseFont)
+        label.adjustsFontForContentSizeCategory = true
+        
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    private lazy var spacer = {
-        let view = UIView()
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     private lazy var signUpButton = {
@@ -71,9 +74,6 @@ class StartViewController: UIViewController {
     private lazy var stackView = {
         let stackView = UIStackView(arrangedSubviews:
                                         [
-                                            logo,
-                                            welcomeLabel,
-                                            spacer,
                                             signUpButton,
                                             googleSocialLoginButton,
                                             facebookSocialLoginButton,
@@ -83,7 +83,14 @@ class StartViewController: UIViewController {
         )
         stackView.axis = .vertical
         stackView.spacing = 12
-        stackView.alignment = .center
+        stackView.alignment = .fill
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: 48,
+            bottom: 0,
+            trailing: 48
+        )
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -97,7 +104,13 @@ class StartViewController: UIViewController {
         
         addSubviews()
         setupConstraints()
+        updateLayoutForOrientation()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
+        updateLayoutForOrientation()
     }
     
     @objc func goToAlbumView() {
@@ -110,10 +123,32 @@ class StartViewController: UIViewController {
         
         scrollView.addSubview(contentView)
         
+        contentView.addSubview(logo)
+        contentView.addSubview(welcomeLabel)
         contentView.addSubview(stackView)
     }
     
+    private func updateLayoutForOrientation() {
+        let isLandscape = view.bounds.width > view.bounds.height
+        
+        logoCenterYConstraint?.isActive = !isLandscape
+        logoTopConstraint?.isActive = isLandscape
+    }
+    
     private func setupConstraints() {
+        
+        logoCenterYConstraint = logo.centerYAnchor.constraint(
+            equalTo: contentView.centerYAnchor,
+            constant: -50
+        )
+
+        logoTopConstraint = logo.topAnchor.constraint(
+            equalTo: contentView.safeAreaLayoutGuide.topAnchor,
+            constant: 32
+        )
+        
+        logoCenterYConstraint?.isActive = true
+        
         NSLayoutConstraint.activate([
             // ScrollView
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -122,40 +157,28 @@ class StartViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             // ContentView
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            // StackView
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.heightAnchor),
             
             // Logo
             logo.heightAnchor.constraint(equalToConstant: 53),
             logo.widthAnchor.constraint(equalToConstant: 53),
-            
+            logo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
             // WelcomeLabel
             welcomeLabel.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 10),
+            welcomeLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
-            // Buttons
-            signUpButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 48),
-            signUpButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -48),
-            googleSocialLoginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 48),
-            googleSocialLoginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -48),
-            facebookSocialLoginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 48),
-            facebookSocialLoginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -48),
-            appleSocialLoginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 48),
-            appleSocialLoginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -48),
-            signInButton.topAnchor.constraint(equalTo: appleSocialLoginButton.bottomAnchor, constant: 1)
+            // StackView
+            stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 22),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
     
-}
-
-#Preview {
-    StartViewController()
 }
