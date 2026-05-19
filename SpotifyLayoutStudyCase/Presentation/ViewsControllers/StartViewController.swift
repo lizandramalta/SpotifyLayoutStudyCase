@@ -39,7 +39,14 @@ class StartViewController: UIViewController {
     private lazy var welcomeLabel = {
         let label = UILabel()
         label.text = "Millions of Songs.\nFree on Spotify"
-        label.font = UIFont(name: "AvenirNext-Bold", size: 28)
+        
+        let baseFont =
+            UIFont(name: "AvenirNext-Bold", size: 28) ??
+            UIFont.systemFont(ofSize: 28, weight: .bold)
+        label.font = UIFontMetrics(forTextStyle: .title1)
+            .scaledFont(for: baseFont)
+        label.adjustsFontForContentSizeCategory = true
+        
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center

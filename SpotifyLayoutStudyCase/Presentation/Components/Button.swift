@@ -19,9 +19,19 @@ final class Button: UIButton {
     
     private lazy var labelComponent = {
         let label = UILabel()
-        label.font = UIFont(name: "AvenirNext-Bold", size: 16)
+        label.numberOfLines = 0
+        
+        let baseFont =
+            UIFont(name: "AvenirNext-Bold", size: 16) ??
+            UIFont.systemFont(ofSize: 16, weight: .bold)
+        
+        label.font = UIFontMetrics(forTextStyle: .callout)
+            .scaledFont(for: baseFont)
+        
+        label.adjustsFontForContentSizeCategory = true
         
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
