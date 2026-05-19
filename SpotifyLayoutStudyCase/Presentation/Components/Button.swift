@@ -59,6 +59,7 @@ final class Button: UIButton {
     private func setupContent(label: String, icon: UIImage?){
         labelComponent.text = label
         iconComponent.image = icon
+        self.accessibilityLabel = label
     }
     
     private func setupView(){
