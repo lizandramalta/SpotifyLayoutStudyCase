@@ -12,9 +12,9 @@ struct SearchBarView: View {
         HStack(spacing: 8) {
             HStack(spacing: 6) {
                 Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color(white: 0.6))
                 Text("Find in playlist")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color(white: 0.6))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 10)

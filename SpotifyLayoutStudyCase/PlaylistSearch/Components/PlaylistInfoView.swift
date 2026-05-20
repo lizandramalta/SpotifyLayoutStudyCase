@@ -15,7 +15,7 @@ struct PlaylistInfoView: View {
             // Descrição
             Text("New and approved indie pop. Cover: No Rome")
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color(white: 0.6))
 
             // Ícone Spotify
             Label("Spotify", systemImage: "music.note")
@@ -25,7 +25,7 @@ struct PlaylistInfoView: View {
             // Likes e duração
             Text("1,629,592 likes • 6h 48m")
                 .font(.footnote)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color(white: 0.6))
 
             // Linha de ações: ícones à esquerda, play à direita
             HStack {
@@ -40,7 +40,7 @@ struct PlaylistInfoView: View {
                         Image(systemName: "ellipsis")
                     }
                 }
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color(white: 0.6))
                 .imageScale(.large)
 
                 Spacer()

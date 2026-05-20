@@ -12,6 +12,7 @@ struct Track: Identifiable {
     let id = UUID()
     let title: String
     let artist: String
+    let imageName: String
 }
 
 struct TrackRowView: View {
@@ -19,10 +20,10 @@ struct TrackRowView: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            // Thumbnail placeholder
-            RoundedRectangle(cornerRadius: 4)
-                .fill(Color(white: 0.3))
+            Image(track.imageName)
+                .resizable()
                 .frame(width: 48, height: 48)
+                .cornerRadius(4)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(track.title)
@@ -30,14 +31,14 @@ struct TrackRowView: View {
                     .foregroundStyle(.white)
                 Text(track.artist)
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color(white: 0.6))
             }
             // Empurra o botão para a direita mesmo com texto longo
             .frame(maxWidth: .infinity, alignment: .leading)
 
             SwiftUI.Button { } label: {
                 Image(systemName: "ellipsis")
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Color(white: 0.6))
             }
         }
         .padding(.horizontal, 16)

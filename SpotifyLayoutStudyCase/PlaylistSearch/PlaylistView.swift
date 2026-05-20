@@ -11,11 +11,11 @@ import SwiftUI
 struct PlaylistView: View {
 
     private let tracks: [Track] = [
-        Track(title: "Easy", artist: "Troye Sivan"),
-        Track(title: "chance with you", artist: "mehro"),
-        Track(title: "Nirvana", artist: "The Beach"),
-        Track(title: "Running", artist: "Alvvays"),
-        Track(title: "Comfort Crowd", artist: "Conan Gray"),
+        Track(title: "Easy", artist: "Troye Sivan", imageName: "musica1"),
+        Track(title: "chance with you", artist: "mehro", imageName: "musica2"),
+        Track(title: "Nirvana", artist: "The Beach", imageName: "musica3"),
+        Track(title: "Running", artist: "Alvvays", imageName: "musica4"),
+        Track(title: "Comfort Crowd", artist: "Conan Gray", imageName: "musica5"),
     ]
 
     var body: some View {
