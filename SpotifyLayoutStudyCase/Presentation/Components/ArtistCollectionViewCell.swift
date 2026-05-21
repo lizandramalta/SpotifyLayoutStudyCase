@@ -20,4 +20,25 @@ class ArtistCollectionViewCell: UICollectionViewCell {
         cardImage.clipsToBounds = true
         cardImage.contentMode = .scaleAspectFill
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupDynamicType()
+    }
+    
+    private func setupDynamicType() {
+        
+        if let customFont = UIFont(name: "AvenirNext-Bold", size: 13) {
+            textLabel.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
+        } else {
+            textLabel.font = .preferredFont(forTextStyle: .body)
+        }
+        
+        textLabel.adjustsFontForContentSizeCategory = true
+        
+        textLabel.numberOfLines = 0
+        textLabel.adjustsFontSizeToFitWidth = true
+        textLabel.minimumScaleFactor = 0.7
+    }
+    
 }

@@ -43,6 +43,15 @@ class ChooseArtistViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let customFont = UIFont(name: "AvenirNext-Bold", size: 16) else { return }
+        guard let customFont2 = UIFont(name: "AvenirNext-Medium", size: 14) else { return }
+        
+        //dynamic type 
+        label1.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
+        label1.adjustsFontForContentSizeCategory = true
+        searchField.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont2)
+        searchField.adjustsFontForContentSizeCategory = true
+        
         //registra o XIB na Collection View
         let nib = UINib(nibName: "ArtistCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: ArtistCollectionViewCell.identifier)
