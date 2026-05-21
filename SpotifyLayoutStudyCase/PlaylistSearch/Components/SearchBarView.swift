@@ -12,21 +12,21 @@ struct SearchBarView: View {
         HStack(spacing: 8) {
             HStack(spacing: 6) {
                 Image(systemName: "magnifyingglass")
-                    .foregroundStyle(Color(white: 0.6))
+                    .foregroundStyle(Color.white)
                 Text("Find in playlist")
-                    .foregroundStyle(Color(white: 0.6))
+                    .foregroundStyle(Color.white)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 10)
-            .padding(.vertical, 10)
-            .background(Color(white: 0.2))
+            .padding(.vertical, 7)
+            .background(Color(white: 1.0).opacity(0.15)) // ← translúcido
             .clipShape(RoundedRectangle(cornerRadius: 6))
 
             SwiftUI.Button("Sort") {}
+                .buttonStyle(.plain)          // ← primeiro
                 .foregroundStyle(.white)
         }
         .padding(.horizontal, 16)
-        // Dynamic Type: o .body já escala com o tamanho de fonte do sistema
         .font(.body)
     }
 }

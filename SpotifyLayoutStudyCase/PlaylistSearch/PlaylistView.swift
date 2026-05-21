@@ -21,35 +21,43 @@ struct PlaylistView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
 
-            // Fundo escuro cobrindo tudo, inclusive atrás da status bar
+            // Fundo base escuro
             Color(white: 0.08).ignoresSafeArea()
 
+            // Gradiente marrom no topo (cor extraída da capa)
             VStack(spacing: 0) {
-                // ScrollView carrega todos os fragmentos acima
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.35, green: 0.22, blue: 0.10), // marrom da capa
+                        Color(white: 0.08)                          // fundo escuro
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(height: 480) // cobre a área da capa + infos
+                .ignoresSafeArea(edges: .top)
+
+                Spacer()
+            }
+
+            // Conteúdo
+            VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: 0) {
                         SearchBarView()
                             .padding(.top, 16)
-
                         CoverView()
                             .padding(.top, 16)
-
                         PlaylistInfoView()
                             .padding(.top, 12)
-
                         TrackListView(tracks: tracks)
                             .padding(.top, 12)
-
-                        // Espaço no final para o conteúdo não ficar atrás do mini player
                         Spacer().frame(height: 64)
                     }
                 }
-
-                // Mini player fixo no rodapé, fora do scroll
                 MiniPlayerView()
             }
         }
-        // Barra de status com ícones claros (igual ao Spotify)
         .preferredColorScheme(.dark)
     }
 }

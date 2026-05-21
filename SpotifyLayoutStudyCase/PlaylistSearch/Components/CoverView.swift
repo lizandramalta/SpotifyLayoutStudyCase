@@ -13,13 +13,14 @@ struct CoverView: View {
             Image("capaAlbum-indie")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
+                .frame(width: 220, height: 220) // ← menor e centralizado
+                .cornerRadius(4)
 
             Text("Indie Pop")
-                .font(.system(size: 32, weight: .bold))
-                .fontWeight(.bold)
+                .font(.system(size: 24, weight: .bold))
                 .foregroundStyle(.white)
-                .padding(16)
+                .padding(12)
         }
-        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity, alignment: .center) // ← centraliza
     }
 }

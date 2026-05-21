@@ -11,10 +11,11 @@ import SwiftUI
 struct MiniPlayerView: View {
     var body: some View {
         HStack {
-            // Thumbnail
-            RoundedRectangle(cornerRadius: 4)
-                .fill(Color(white: 0.3))
+            Image("musica1")
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
                 .frame(width: 40, height: 40)
+                .cornerRadius(4)
                 .padding(.leading, 8)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -29,8 +30,7 @@ struct MiniPlayerView: View {
             Spacer()
 
             // Ícone Bluetooth
-            Image(systemName: "bluetooth")
-                .foregroundStyle(.secondary)
+            Image("bluetooth")
 
             SwiftUI.Button { } label: {
                 Image(systemName: "pause.fill")

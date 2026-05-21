@@ -18,9 +18,14 @@ struct PlaylistInfoView: View {
                 .foregroundStyle(Color(white: 0.6))
 
             // Ícone Spotify
-            Label("Spotify", systemImage: "music.note")
-                .font(.subheadline)
-                .foregroundStyle(.white)
+            HStack(spacing: 6) {
+                Image("Logo") // seu asset, ou use o símbolo abaixo
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                Text("Spotify")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.white)
+            }
 
             // Likes e duração
             Text("1,629,592 likes • 6h 48m")
