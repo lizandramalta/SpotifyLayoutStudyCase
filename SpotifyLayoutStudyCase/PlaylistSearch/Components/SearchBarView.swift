@@ -19,11 +19,11 @@ struct SearchBarView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 10)
             .padding(.vertical, 7)
-            .background(Color(white: 1.0).opacity(0.15)) // ← translúcido
+            .background(Color(white: 1.0).opacity(0.15)) 
             .clipShape(RoundedRectangle(cornerRadius: 6))
 
             SwiftUI.Button("Sort") {}
-                .buttonStyle(.plain)          // ← primeiro
+                .buttonStyle(.plain)
                 .foregroundStyle(.white)
         }
         .padding(.horizontal, 16)
