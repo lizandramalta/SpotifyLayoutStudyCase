@@ -48,7 +48,7 @@
                                     <action selector="button1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IHR-Gh-Jo0"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="          Search" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rGT-9O-vQg">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rGT-9O-vQg">
                                 <rect key="frame" x="20" y="175" width="353" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.07061767578" green="0.07061767578" blue="0.07061767578" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

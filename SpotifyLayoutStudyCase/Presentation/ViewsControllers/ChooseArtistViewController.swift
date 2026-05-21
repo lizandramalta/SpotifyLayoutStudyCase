@@ -61,6 +61,11 @@ class ChooseArtistViewController: UIViewController, UICollectionViewDataSource, 
         
         searchField.layer.cornerRadius = 5
         
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: searchField.frame.height))
+
+        searchField.leftView = paddingView
+        searchField.leftViewMode = .always
+        
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
         
         
