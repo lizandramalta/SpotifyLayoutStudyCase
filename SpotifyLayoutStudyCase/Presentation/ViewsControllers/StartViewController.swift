@@ -4,7 +4,7 @@
 //
 //  Created by Lizandra Malta on 17/05/26.
 //
-
+import SwiftUI
 import UIKit
 
 class StartViewController: UIViewController {
@@ -70,9 +70,14 @@ class StartViewController: UIViewController {
         
         return button
     }()
+
     
-    private lazy var facebookSocialLoginButton = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
-    
+    private lazy var facebookSocialLoginButton =  {
+    let button = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
+    button.addTarget(self, action: #selector(goToPlaylistView), for: .touchUpInside)
+    return button
+    }()
+
     private lazy var appleSocialLoginButton = Button(label: "Continue with Apple", backgroundColor: .clear, foregroundColor: .white, icon: UIImage(systemName: "apple.logo"), borderColor: .white, borderWidth: 1)
     
     private lazy var signInButton = Button(label: "Log in", backgroundColor: .clear, foregroundColor: .white)
@@ -134,6 +139,10 @@ class StartViewController: UIViewController {
     @objc func goToAlbumView() {
         let nextScreen = AlbumViewController()
         navigationController?.pushViewController(nextScreen, animated: true)
+    }
+    @objc func goToPlaylistView() {
+        let hostingController = UIHostingController(rootView: PlaylistView())
+        navigationController?.pushViewController(hostingController, animated: true)
     }
     
     private func addSubviews() {
