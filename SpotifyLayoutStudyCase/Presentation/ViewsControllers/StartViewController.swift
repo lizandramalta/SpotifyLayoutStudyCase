@@ -58,27 +58,26 @@ class StartViewController: UIViewController {
     private lazy var signUpButton = {
         let button = Button(label: "Sign up free", backgroundColor: .accent, foregroundColor: .black)
         
-        button.addTarget(self, action: #selector(goToAlbumView), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToChooseArtistView), for: .touchUpInside)
         
         return button
     }()
     
-//    private lazy var googleSocialLoginButton = Button(label: "Continue with Google", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.googleLogo, borderColor: .white, borderWidth: 1)
     private lazy var googleSocialLoginButton = {
-        let button = Button(
-            label: "Continue with Google",
-            backgroundColor: .clear,
-            foregroundColor: .white,
-            icon: UIImage.googleLogo,
-            borderColor: .white,
-            borderWidth: 1
-        )
-        button.addTarget(self, action: #selector(goToPlaylistView), for: .touchUpInside)
+        let button = Button(label: "Continue with Google", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.googleLogo, borderColor: .white, borderWidth: 1)
+        
+        button.addTarget(self, action: #selector(goToAlbumView), for: .touchUpInside)
+        
         return button
     }()
+
     
-    private lazy var facebookSocialLoginButton = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
-    
+    private lazy var facebookSocialLoginButton =  {
+    let button = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
+    button.addTarget(self, action: #selector(goToPlaylistView), for: .touchUpInside)
+    return button
+    }()
+
     private lazy var appleSocialLoginButton = Button(label: "Continue with Apple", backgroundColor: .clear, foregroundColor: .white, icon: UIImage(systemName: "apple.logo"), borderColor: .white, borderWidth: 1)
     
     private lazy var signInButton = Button(label: "Log in", backgroundColor: .clear, foregroundColor: .white)
@@ -123,6 +122,18 @@ class StartViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         updateLayoutForOrientation()
+    }
+    
+    @objc func goToChooseArtistView() {
+        let storyboard = UIStoryboard(name: "ChooseArtist", bundle: nil)
+        
+        guard let nextScreen = storyboard.instantiateViewController(
+            withIdentifier: "ChooseArtistViewController"
+        ) as? ChooseArtistViewController else {
+            return
+        }
+        
+        navigationController?.pushViewController(nextScreen, animated: true)
     }
     
     @objc func goToAlbumView() {
