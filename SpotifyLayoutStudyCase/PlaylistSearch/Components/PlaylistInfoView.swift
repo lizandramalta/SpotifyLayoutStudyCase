@@ -19,7 +19,7 @@ struct PlaylistInfoView: View {
 
             // Ícone Spotify
             HStack(spacing: 6) {
-                Image("Logo") // seu asset, ou use o símbolo abaixo
+                Image("Logo")
                     .resizable()
                     .frame(width: 20, height: 20)
                 Text("Spotify")
@@ -27,12 +27,10 @@ struct PlaylistInfoView: View {
                     .foregroundStyle(.white)
             }
 
-            // Likes e duração
             Text("1,629,592 likes • 6h 48m")
                 .font(.footnote)
                 .foregroundStyle(Color(white: 0.6))
 
-            // Linha de ações: ícones à esquerda, play à direita
             HStack {
                 HStack(spacing: 24) {
                     SwiftUI.Button { } label: {

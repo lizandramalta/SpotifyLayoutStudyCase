@@ -13,7 +13,7 @@ struct CoverView: View {
             Image("capaAlbum-indie")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
-                .frame(width: 220, height: 220) // ← menor e centralizado
+                .frame(width: 220, height: 220)
                 .cornerRadius(4)
 
             Text("Indie Pop")
@@ -21,6 +21,6 @@ struct CoverView: View {
                 .foregroundStyle(.white)
                 .padding(12)
         }
-        .frame(maxWidth: .infinity, alignment: .center) // ← centraliza
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }

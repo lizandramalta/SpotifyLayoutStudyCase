@@ -24,17 +24,16 @@ struct PlaylistView: View {
             // Fundo base escuro
             Color(white: 0.08).ignoresSafeArea()
 
-            // Gradiente marrom no topo (cor extraída da capa)
             VStack(spacing: 0) {
                 LinearGradient(
                     colors: [
-                        Color(red: 0.35, green: 0.22, blue: 0.10), // marrom da capa
-                        Color(white: 0.08)                          // fundo escuro
+                        Color(red: 0.35, green: 0.22, blue: 0.10),
+                        Color(white: 0.08)
                     ],
                     startPoint: .top,
                     endPoint: .bottom
                 )
-                .frame(height: 480) // cobre a área da capa + infos
+                .frame(height: 480)
                 .ignoresSafeArea(edges: .top)
 
                 Spacer()

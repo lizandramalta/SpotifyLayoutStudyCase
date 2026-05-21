@@ -33,7 +33,7 @@ struct TrackRowView: View {
                     .font(.footnote)
                     .foregroundStyle(Color(white: 0.6))
             }
-            // Empurra o botão para a direita mesmo com texto longo
+            
             .frame(maxWidth: .infinity, alignment: .leading)
 
             SwiftUI.Button { } label: {
@@ -43,7 +43,6 @@ struct TrackRowView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 6)
-        // Fundo transparente para não sobrepor o background da tela
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
     }
@@ -53,8 +52,6 @@ struct TrackListView: View {
     let tracks: [Track]
 
     var body: some View {
-        // LazyVStack dentro de ScrollView = sem altura fixa, cresce conforme o conteúdo
-        // Não precisa do hack de tableViewHeightConstraint do UIKit!
         LazyVStack(spacing: 0) {
             ForEach(tracks) { track in
                 TrackRowView(track: track)

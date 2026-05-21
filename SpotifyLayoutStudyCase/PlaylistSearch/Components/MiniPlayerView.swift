@@ -29,7 +29,6 @@ struct MiniPlayerView: View {
 
             Spacer()
 
-            // Ícone Bluetooth
             Image("bluetooth")
 
             SwiftUI.Button { } label: {
