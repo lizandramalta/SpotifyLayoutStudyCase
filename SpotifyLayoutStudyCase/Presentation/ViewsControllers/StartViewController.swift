@@ -41,8 +41,8 @@ class StartViewController: UIViewController {
         label.text = "Millions of Songs.\nFree on Spotify"
         
         let baseFont =
-            UIFont(name: "AvenirNext-Bold", size: 28) ??
-            UIFont.systemFont(ofSize: 28, weight: .bold)
+        UIFont(name: "AvenirNext-Bold", size: 28) ??
+        UIFont.systemFont(ofSize: 28, weight: .bold)
         label.font = UIFontMetrics(forTextStyle: .title1)
             .scaledFont(for: baseFont)
         label.adjustsFontForContentSizeCategory = true
@@ -70,15 +70,20 @@ class StartViewController: UIViewController {
         
         return button
     }()
-
+    
     
     private lazy var facebookSocialLoginButton =  {
-    let button = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
-    button.addTarget(self, action: #selector(goToPlaylistView), for: .touchUpInside)
-    return button
+        let button = Button(label: "Continue with Facebook", backgroundColor: .clear, foregroundColor: .white, icon: UIImage.facebookLogo, borderColor: .white, borderWidth: 1)
+        button.addTarget(self, action: #selector(goToPlaylistView), for: .touchUpInside)
+        return button
     }()
-
-    private lazy var appleSocialLoginButton = Button(label: "Continue with Apple", backgroundColor: .clear, foregroundColor: .white, icon: UIImage(systemName: "apple.logo"), borderColor: .white, borderWidth: 1)
+    
+    private lazy var appleSocialLoginButton = {
+        let button = Button(label: "Continue with Apple", backgroundColor: .clear, foregroundColor: .white, icon: UIImage(systemName: "apple.logo"), borderColor: .white, borderWidth: 1)
+        button.addTarget(self, action: #selector(goToAlbumControlView), for: .touchUpInside)
+        
+        return button
+    }()
     
     private lazy var signInButton = Button(label: "Log in", backgroundColor: .clear, foregroundColor: .white)
     
@@ -99,7 +104,7 @@ class StartViewController: UIViewController {
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: 0,
             leading: 48,
-            bottom: 0,
+            bottom: -10,
             trailing: 48
         )
         
@@ -140,9 +145,22 @@ class StartViewController: UIViewController {
         let nextScreen = AlbumViewController()
         navigationController?.pushViewController(nextScreen, animated: true)
     }
+    
     @objc func goToPlaylistView() {
         let hostingController = UIHostingController(rootView: PlaylistView())
         navigationController?.pushViewController(hostingController, animated: true)
+    }
+    
+    @objc func goToAlbumControlView() {
+        let storyboard = UIStoryboard(name: "AlbumControlview", bundle: nil)
+        
+        guard let nextScreen = storyboard.instantiateViewController(
+            withIdentifier: "AlbumControlViewController"
+        ) as? AlbumControlViewController else {
+            return
+        }
+        
+        navigationController?.pushViewController(nextScreen, animated: true)
     }
     
     private func addSubviews() {
@@ -168,7 +186,7 @@ class StartViewController: UIViewController {
             equalTo: contentView.centerYAnchor,
             constant: -50
         )
-
+        
         logoTopConstraint = logo.topAnchor.constraint(
             equalTo: contentView.safeAreaLayoutGuide.topAnchor,
             constant: 32
@@ -195,7 +213,7 @@ class StartViewController: UIViewController {
             logo.heightAnchor.constraint(equalToConstant: 53),
             logo.widthAnchor.constraint(equalToConstant: 53),
             logo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-
+            
             // WelcomeLabel
             welcomeLabel.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 10),
             welcomeLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),

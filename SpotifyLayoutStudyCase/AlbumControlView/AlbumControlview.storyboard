@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Album Control View Controller-->
         <scene sceneID="Nd2-jr-9WU">
             <objects>
-                <viewController storyboardIdentifier="AlbumControlView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cjh-lT-gl4" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumControlViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cjh-lT-gl4" customClass="AlbumControlViewController" customModule="SpotifyLayoutStudyCase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiH-V5-jft">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l61-Y2-pbh" userLabel="MainStack">
-                                                <rect key="frame" x="56.666666666666657" y="126" width="280" height="658"/>
+                                                <rect key="frame" x="56.666666666666657" y="126" width="280" height="650"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-0V-jVy" userLabel="HeaderStack">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="272.33333333333331"/>
@@ -57,7 +57,7 @@
                                                         <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XxF-tT-eVa" userLabel="MenuStack">
-                                                        <rect key="frame" x="0.0" y="320" width="280" height="260.33333333333326"/>
+                                                        <rect key="frame" x="0.0" y="316" width="280" height="260.33333333333326"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" id="hdz-0f-Pt9" userLabel="Like">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="20.333333333333332"/>
@@ -207,7 +207,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="bottom" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22K-eI-gjX">
-                                                        <rect key="frame" x="0.0" y="614" width="280" height="44"/>
+                                                        <rect key="frame" x="0.0" y="606" width="280" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="Uuv-Of-koQ"/>
                                                         </constraints>
