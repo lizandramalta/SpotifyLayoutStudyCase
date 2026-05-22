@@ -85,7 +85,12 @@ class StartViewController: UIViewController {
         return button
     }()
     
-    private lazy var signInButton = Button(label: "Log in", backgroundColor: .clear, foregroundColor: .white)
+    private lazy var signInButton = {
+        let button = Button(label: "Log in", backgroundColor: .clear, foregroundColor: .white)
+        button.addTarget(self, action: #selector(goToChoosePodcastView), for: .touchUpInside)
+        
+        return button
+    }()
     
     private lazy var stackView = {
         let stackView = UIStackView(arrangedSubviews:
@@ -160,6 +165,11 @@ class StartViewController: UIViewController {
             return
         }
         
+        navigationController?.pushViewController(nextScreen, animated: true)
+    }
+    
+    @objc func goToChoosePodcastView(){
+        let nextScreen = PodcastsViewController()
         navigationController?.pushViewController(nextScreen, animated: true)
     }
     
