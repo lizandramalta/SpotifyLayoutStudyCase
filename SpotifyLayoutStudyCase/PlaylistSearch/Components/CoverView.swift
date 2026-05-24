@@ -10,7 +10,7 @@ import SwiftUI
 struct CoverView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("capaAlbum-indie")
+            Image("capaAlbumIdie")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 220, height: 220)
