@@ -10,7 +10,7 @@ import SwiftUI
 struct CoverView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("capaAlbum-indie")
+            Image("capaAlbumIdie")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 220, height: 220)
@@ -22,5 +22,8 @@ struct CoverView: View {
                 .padding(12)
         }
         .frame(maxWidth: .infinity, alignment: .center)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Capa da playlist Indie Pop")
+        .accessibilityAddTraits(.isImage)
     }
 }

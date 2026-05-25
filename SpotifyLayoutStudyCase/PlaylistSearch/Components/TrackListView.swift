@@ -24,6 +24,7 @@ struct TrackRowView: View {
                 .resizable()
                 .frame(width: 48, height: 48)
                 .cornerRadius(4)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(track.title)
@@ -33,18 +34,21 @@ struct TrackRowView: View {
                     .font(.footnote)
                     .foregroundStyle(Color(white: 0.6))
             }
-            
             .frame(maxWidth: .infinity, alignment: .leading)
 
             SwiftUI.Button { } label: {
                 Image(systemName: "ellipsis")
                     .foregroundStyle(Color(white: 0.6))
             }
+            .accessibilityLabel("Mais opções para \(track.title)")
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 6)
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("\(track.title), \(track.artist)")
+        .accessibilityHint("Toque duas vezes para reproduzir")
     }
 }
 
@@ -53,9 +57,11 @@ struct TrackListView: View {
 
     var body: some View {
         LazyVStack(spacing: 0) {
-            ForEach(tracks) { track in
+            ForEach(Array(tracks.enumerated()), id: \.element.id) { index, track in
                 TrackRowView(track: track)
+                    .accessibilityLabel("\(track.title), \(track.artist), faixa \(index + 1) de \(tracks.count)")
             }
         }
+        .accessibilityLabel("Lista de faixas")
     }
 }
