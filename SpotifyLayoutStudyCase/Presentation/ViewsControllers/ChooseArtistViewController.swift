@@ -46,7 +46,9 @@ class ChooseArtistViewController: UIViewController, UICollectionViewDataSource, 
         guard let customFont = UIFont(name: "AvenirNext-Bold", size: 16) else { return }
         guard let customFont2 = UIFont(name: "AvenirNext-Medium", size: 14) else { return }
         
-        //dynamic type 
+        navigationItem.hidesBackButton = true
+        
+        //dynamic type
         label1.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
         label1.adjustsFontForContentSizeCategory = true
         searchField.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont2)
@@ -128,6 +130,7 @@ class ChooseArtistViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     @IBAction func button1(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     
