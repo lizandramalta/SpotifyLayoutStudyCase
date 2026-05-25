@@ -35,6 +35,7 @@ struct PlaylistView: View {
                 )
                 .frame(height: 480)
                 .ignoresSafeArea(edges: .top)
+                .accessibilityHidden(true)
 
                 Spacer()
             }
@@ -52,11 +53,15 @@ struct PlaylistView: View {
                         TrackListView(tracks: tracks)
                             .padding(.top, 12)
                         Spacer().frame(height: 64)
+                            .accessibilityHidden(true)
                     }
                 }
+                .accessibilityLabel("Conteúdo da playlist Indie Pop")
+
                 MiniPlayerView()
             }
         }
         .preferredColorScheme(.dark)
+        .accessibilityElement(children: .contain)
     }
 }

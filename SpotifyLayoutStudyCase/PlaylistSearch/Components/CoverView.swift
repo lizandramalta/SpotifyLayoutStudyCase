@@ -22,5 +22,8 @@ struct CoverView: View {
                 .padding(12)
         }
         .frame(maxWidth: .infinity, alignment: .center)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Capa da playlist Indie Pop")
+        .accessibilityAddTraits(.isImage)
     }
 }
